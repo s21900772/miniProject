@@ -1,7 +1,8 @@
 typedef struct{
-	char date[64];
 	int income;
-	char kind[128];
+	char date[64];
+	char category[10];
+	char expression[128];
 } Budget;
 
 int LoadFile(Budget* b);
@@ -12,5 +13,6 @@ void readBudget(Budget* b, int count);
 void updateBudget(Budget* b, int count);
 void deleteBudget(Budget* b, int count);
 void searchByDate(Budget* b, int count);
-void searcgBykind(Budget* b, int count);
+void searchBykind(Budget* b, int count);
+void searchMoney(Budget* b, int count);
 void saveFile(Budget* b, int count);
