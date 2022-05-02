@@ -7,8 +7,7 @@ typedef struct{
 
 int LoadFile(Budget* b);
 void selectMenu();
-void addIcome(Budget* b, int price);
-void addOutgo(Budget* b, int price);
+void createBudget(Budget* b, int price);
 void readBudget(Budget* b, int count);
 void updateBudget(Budget* b, int count);
 void deleteBudget(Budget* b, int count);
