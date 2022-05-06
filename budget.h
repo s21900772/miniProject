@@ -6,7 +6,7 @@ typedef struct{
 } Budget;
 
 int LoadFile(Budget* b);
-void selectMenu();
+int selectMenu();
 void createBudget(Budget* b, int price);
 void readBudget(Budget* b, int count);
 void updateBudget(Budget* b, int count);
