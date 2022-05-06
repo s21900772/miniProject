@@ -7,11 +7,12 @@ typedef struct{
 
 int LoadFile(Budget* b);
 int selectMenu();
-void createBudget(Budget* b, int price);
+int createBudget(Budget* b);
 void readBudget(Budget* b, int count);
-void updateBudget(Budget* b, int count);
-void deleteBudget(Budget* b, int count);
+void updateBudget(Budget* b);
+int deleteBudget(Budget* b);
 void searchByDate(Budget* b, int count);
 void searchBykind(Budget* b, int count);
 void searchMoney(Budget* b, int count);
 void saveFile(Budget* b, int count);
+int selectDataNo(Budget* b, int count);
