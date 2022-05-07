@@ -38,10 +38,23 @@ void readBudget(Budget* b, int count) {
     }
 }
 
-void updateBudget(Budget* b) {
+void updateBudget(Budget* b){
 
+    printf("금액입력 (지출: - /수입: +) : ");
+    scanf("%d", &b->income);
+    printf("날짜입력: ");
+    scanf("%s", b->date);
+    printf("카테고리입력");
+    printf(" (식사, 의료/건강, 카페/간식, 술/유흥, 의류/미용, 교통, 주거/통신, 생활, 문화/여가, 여행/숙박, 교육, 기타) : ");
+    scanf("%s", b->category);
+    printf("상세내역 : ");
+    scanf("%s", b->expression);
+    printf("==> 수정됨!\n");
 }
-int deleteBudget(Budget* b) {
+
+int deleteBudget(Budget* b){
+    b->income=-1;
+    printf("==> 삭제됨!\n");
     return 0;
 }
 
