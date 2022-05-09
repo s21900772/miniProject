@@ -37,7 +37,7 @@ void readBudget(Budget* b, int count) {
         if(b[i].income == -1) continue;
         printf("%d %s %d %s %s\n", i+1, b[i].date, b[i].income, b[i].category, b[i].expression);
     }
-    printf("total : %d",total);
+    printf("total : %d\n",total);
 }
 
 void updateBudget(Budget* b){
