@@ -18,6 +18,7 @@ int selectMenu() {
 int createBudget(Budget* b) {
     printf("금액입력 (지출: - /수입: +) : ");
     scanf("%d", &b->income);
+    total += b->income;
     printf("날짜입력: ");
     scanf("%s", b->date);
     printf("카테고리입력");
@@ -36,6 +37,7 @@ void readBudget(Budget* b, int count) {
         if(b[i].income == -1) continue;
         printf("%d %s %d %s %s\n", i+1, b[i].date, b[i].income, b[i].category, b[i].expression);
     }
+    printf("total : %d",total);
 }
 
 void updateBudget(Budget* b){
