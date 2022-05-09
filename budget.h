@@ -4,6 +4,7 @@ typedef struct{
 	char category[10];
 	char expression[128];
 } Budget;
+int total;
 
 int LoadFile(Budget* b);
 int selectMenu();
