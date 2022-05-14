@@ -68,3 +68,57 @@ int selectDataNo(Budget* b, int count){
     getchar();
     return no;
 }
+
+void searchByDate(Budget* b, int count) {
+    char search[20];
+    int num = 0;
+    printf("검색할 날짜는? ");
+    scanf("%s", search);
+    printf("===========================\n");
+    for(int i=0; i<count; i++) {
+        if(b[i].income == -1) continue;
+        if(strstr(b[i].date, search)) {
+            printf("%d %s %d %s %s\n", i+1, b[i].date, b[i].income, b[i].category, b[i].expression);;
+            num++;
+        }
+    }
+    if(num == 0) {
+        printf("=> 검색된 데이터 없음\n");
+    }
+}
+
+void searchByCategory(Budget* b, int count) {
+    char search[20];
+    int num = 0;
+    printf("검색할 카테고리는? ");
+    scanf("%s", search);
+    printf("===========================\n");
+    for(int i=0; i<count; i++) {
+        if(b[i].income == -1) continue;
+        if(strstr(b[i].category, search)) {
+            printf("%d %s %d %s %s\n", i+1, b[i].date, b[i].income, b[i].category, b[i].expression);;
+            num++;
+        }
+    }
+    if(num == 0) {
+        printf("=> 검색된 데이터 없음\n");
+    }
+}
+
+void searchByMoney(Budget* b, int count) {
+    int search;
+    int num = 0;
+    printf("검색할 지출 금액은 (만원단위입력)? ");
+    scanf("%d", &search);
+    printf("===========================\n");
+    for(int i=0; i<count; i++) {
+        if(b[i].income == -1) continue;
+        if(b[i].income >= -search-9999 && b[i].income <= -search) {
+            printf("%d %s %d %s %s\n", i+1, b[i].date, b[i].income, b[i].category, b[i].expression);;
+            num++;
+        }
+    }
+    if(num == 0) {
+        printf("=> 검색된 데이터 없음\n");
+    }
+}
