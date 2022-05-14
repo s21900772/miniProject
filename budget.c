@@ -2,124 +2,207 @@
 #include <stdio.h>
 #include <string.h>
 
-int selectMenu() {
+int selectMenu()
+{
     int menu;
-    printf("\n*** ê°€ê³„ë¶€ ***\n");
-    printf("1. ì¡°íšŒ\n");
-    printf("2. ì¶”ê°€\n");
-    printf("3. ìˆ˜ì •\n");
-    printf("4. ì‚­ì œ\n");
-    printf("5. ì €ì¥\n");
-    printf("0. ì¢…ë£Œ\n\n");
-    printf("=> ì›í•˜ëŠ” ë©”ë‰´ëŠ”? ");
+    printf("\n*** °¡°èºÎ ***\n");
+    printf("1. Á¶È¸\n");
+    printf("2. Ãß°¡\n");
+    printf("3. ¼öÁ¤\n");
+    printf("4. »èÁ¦\n");
+    printf("5. ÀúÀå\n");
+    printf("6. ³¯Â¥·Î °Ë»ö\n");
+    printf("7. Ä«Å×°í¸®·Î °Ë»ö\n");
+    printf("8. ±İ¾×À¸·Î °Ë»ö\n");
+    printf("0. Á¾·á\n\n");
+    printf("=> ¿øÇÏ´Â ¸Ş´º´Â? ");
     scanf("%d", &menu);
     return menu;
 }
 
-int createBudget(Budget* b) {
-    printf("ê¸ˆì•¡ì…ë ¥ (ì§€ì¶œ: - /ìˆ˜ì…: +) : ");
+int createBudget(Budget *b)
+{
+    printf("±İ¾×ÀÔ·Â (ÁöÃâ: - /¼öÀÔ: +) : ");
     scanf("%d", &b->income);
     total += b->income;
-    printf("ë‚ ì§œì…ë ¥: ");
+    printf("³¯Â¥ÀÔ·Â: ");
     scanf("%s", b->date);
-    printf("ì¹´í…Œê³ ë¦¬ì…ë ¥");
-    printf(" (ì‹ì‚¬, ì˜ë£Œ/ê±´ê°•, ì¹´í˜/ê°„ì‹, ìˆ /ìœ í¥, ì˜ë¥˜/ë¯¸ìš©, êµí†µ, ì£¼ê±°/í†µì‹ , ìƒí™œ, ë¬¸í™”/ì—¬ê°€, ì—¬í–‰/ìˆ™ë°•, êµìœ¡, ê¸°íƒ€) : ");
+    printf("Ä«Å×°í¸®ÀÔ·Â");
+    printf(" (½Ä»ç, ÀÇ·á/°Ç°­, Ä«Æä/°£½Ä, ¼ú/À¯Èï, ÀÇ·ù/¹Ì¿ë, ±³Åë, ÁÖ°Å/Åë½Å, »ıÈ°, ¹®È­/¿©°¡, ¿©Çà/¼÷¹Ú, ±³À°, ±âÅ¸) : ");
     scanf("%s", b->category);
-    printf("ìƒì„¸ë‚´ì—­ : ");
+    printf("»ó¼¼³»¿ª : ");
     scanf("%s", b->expression);
 
     return 1;
 }
 
-void readBudget(Budget* b, int count) {
-    printf("ë‚ ì§œ   ê¸ˆì•¡   ì¹´í…Œê³ ë¦¬   ìƒì„¸ë‚´ì—­\n");
+void readBudget(Budget *b, int count)
+{
+    printf("count: %d\n",count);
+    printf("³¯Â¥   ±İ¾×   Ä«Å×°í¸®   »ó¼¼³»¿ª\n");
     printf("=================================\n");
-    for(int i =0; i<count; i++) {
-        if(b[i].income == -1) continue;
-        printf("%d %s %d %s %s\n", i+1, b[i].date, b[i].income, b[i].category, b[i].expression);
+    for (int i = 0; i < count; i++)
+    {
+        if (b[i].income == -1)
+            continue;
+        printf("%d %s %d %s %s\n", i + 1, b[i].date, b[i].income, b[i].category, b[i].expression);
     }
-    printf("total : %d\n",total);
+    printf("total : %d\n", total);
 }
 
-void updateBudget(Budget* b){
+void updateBudget(Budget *b)
+{
 
-    printf("ê¸ˆì•¡ì…ë ¥ (ì§€ì¶œ: - /ìˆ˜ì…: +) : ");
+    printf("±İ¾×ÀÔ·Â (ÁöÃâ: - /¼öÀÔ: +) : ");
     scanf("%d", &b->income);
-    printf("ë‚ ì§œì…ë ¥: ");
+    printf("³¯Â¥ÀÔ·Â: ");
     scanf("%s", b->date);
-    printf("ì¹´í…Œê³ ë¦¬ì…ë ¥");
-    printf(" (ì‹ì‚¬, ì˜ë£Œ/ê±´ê°•, ì¹´í˜/ê°„ì‹, ìˆ /ìœ í¥, ì˜ë¥˜/ë¯¸ìš©, êµí†µ, ì£¼ê±°/í†µì‹ , ìƒí™œ, ë¬¸í™”/ì—¬ê°€, ì—¬í–‰/ìˆ™ë°•, êµìœ¡, ê¸°íƒ€) : ");
+    printf("Ä«Å×°í¸®ÀÔ·Â");
+    printf(" (½Ä»ç, ÀÇ·á/°Ç°­, Ä«Æä/°£½Ä, ¼ú/À¯Èï, ÀÇ·ù/¹Ì¿ë, ±³Åë, ÁÖ°Å/Åë½Å, »ıÈ°, ¹®È­/¿©°¡, ¿©Çà/¼÷¹Ú, ±³À°, ±âÅ¸) : ");
     scanf("%s", b->category);
-    printf("ìƒì„¸ë‚´ì—­ : ");
+    printf("»ó¼¼³»¿ª : ");
     scanf("%s", b->expression);
-    printf("==> ìˆ˜ì •ë¨!\n");
+    printf("==> ¼öÁ¤µÊ!\n");
 }
 
-int deleteBudget(Budget* b){
-    b->income=-1;
-    printf("==> ì‚­ì œë¨!\n");
+int deleteBudget(Budget *b)
+{
+    b->income = -1;
+    printf("==> »èÁ¦µÊ!\n");
     return 0;
 }
 
-int selectDataNo(Budget* b, int count){
+int selectDataNo(Budget *b, int count)
+{
     int no;
-    readBudget(b,count);
-    printf("ë²ˆí˜¸ëŠ” (ì·¨ì†Œ:0)?");
-    scanf("%d",&no);
+    readBudget(b, count);
+    printf("¹øÈ£´Â (Ãë¼Ò:0)?");
+    scanf("%d", &no);
     getchar();
     return no;
 }
 
-void searchByDate(Budget* b, int count) {
+void searchByDate(Budget *b, int count)
+{
     char search[20];
     int num = 0;
-    printf("ê²€ìƒ‰í•  ë‚ ì§œëŠ”? ");
+    printf("°Ë»öÇÒ ³¯Â¥´Â? ");
     scanf("%s", search);
     printf("===========================\n");
-    for(int i=0; i<count; i++) {
-        if(b[i].income == -1) continue;
-        if(strstr(b[i].date, search)) {
-            printf("%d %s %d %s %s\n", i+1, b[i].date, b[i].income, b[i].category, b[i].expression);;
+    for (int i = 0; i < count; i++)
+    {
+        if (b[i].income == -1)
+            continue;
+        if (strstr(b[i].date, search))
+        {
+            printf("%d %s %d %s %s\n", i + 1, b[i].date, b[i].income, b[i].category, b[i].expression);
+            ;
             num++;
         }
     }
-    if(num == 0) {
-        printf("=> ê²€ìƒ‰ëœ ë°ì´í„° ì—†ìŒ\n");
+    if (num == 0)
+    {
+        printf("=> °Ë»öµÈ µ¥ÀÌÅÍ ¾øÀ½\n");
     }
 }
 
-void searchByCategory(Budget* b, int count) {
+void searchByCategory(Budget *b, int count)
+{
     char search[20];
     int num = 0;
-    printf("ê²€ìƒ‰í•  ì¹´í…Œê³ ë¦¬ëŠ”? ");
+    printf("°Ë»öÇÒ Ä«Å×°í¸®´Â? ");
     scanf("%s", search);
     printf("===========================\n");
-    for(int i=0; i<count; i++) {
-        if(b[i].income == -1) continue;
-        if(strstr(b[i].category, search)) {
-            printf("%d %s %d %s %s\n", i+1, b[i].date, b[i].income, b[i].category, b[i].expression);;
+    for (int i = 0; i < count; i++)
+    {
+        if (b[i].income == -1)
+            continue;
+        if (strstr(b[i].category, search))
+        {
+            printf("%d %s %d %s %s\n", i + 1, b[i].date, b[i].income, b[i].category, b[i].expression);
+            ;
             num++;
         }
     }
-    if(num == 0) {
-        printf("=> ê²€ìƒ‰ëœ ë°ì´í„° ì—†ìŒ\n");
+    if (num == 0)
+    {
+        printf("=> °Ë»öµÈ µ¥ÀÌÅÍ ¾øÀ½\n");
     }
 }
 
-void searchByMoney(Budget* b, int count) {
+void searchByMoney(Budget *b, int count)
+{
     int search;
     int num = 0;
-    printf("ê²€ìƒ‰í•  ì§€ì¶œ ê¸ˆì•¡ì€ (ë§Œì›ë‹¨ìœ„ì…ë ¥)? ");
+    printf("°Ë»öÇÒ ÁöÃâ ±İ¾×Àº (¸¸¿ø´ÜÀ§ÀÔ·Â)? ");
     scanf("%d", &search);
     printf("===========================\n");
-    for(int i=0; i<count; i++) {
-        if(b[i].income == -1) continue;
-        if(b[i].income >= -search-9999 && b[i].income <= -search) {
-            printf("%d %s %d %s %s\n", i+1, b[i].date, b[i].income, b[i].category, b[i].expression);;
+    for (int i = 0; i < count; i++)
+    {
+        if (b[i].income == -1)
+            continue;
+        if (b[i].income >= -search - 9999 && b[i].income <= -search)
+        {
+            printf("%d %s %d %s %s\n", i + 1, b[i].date, b[i].income, b[i].category, b[i].expression);
+            ;
             num++;
         }
     }
-    if(num == 0) {
-        printf("=> ê²€ìƒ‰ëœ ë°ì´í„° ì—†ìŒ\n");
+    if (num == 0)
+    {
+        printf("=> °Ë»öµÈ µ¥ÀÌÅÍ ¾øÀ½\n");
     }
+}
+
+void saveFile(Budget* b, int count)
+{
+    FILE *fp;
+
+    fp = fopen("budget.txt", "wt");
+    for (int i = 0; i < count; i++)
+    {
+        if (b[i].income == -1)
+        {
+            continue;
+        }
+
+        fprintf(fp, "%s, %d, %s, %s\n", b[i].date, b[i].income, b[i].category, b[i].expression);
+    }
+
+    fclose(fp);
+    printf("ÀúÀåµÊ!\n");
+}
+
+int LoadFile(Budget *b)
+{
+    int count = 0;
+    FILE *fp;
+
+    if ((fp = fopen("budget.txt", "r")) == NULL)
+    {
+        printf("=> ÆÄÀÏ ¾øÀ½\n");
+        return count;
+    }
+
+    else
+    {
+        while (1)
+        {
+            if (fscanf(fp, "%[^,], %d, %[^,], %[^\n]\n", b[count].date, &b[count].income, b[count].category, b[count].expression) != -1)
+            {
+                count++;
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
+    total = 0;
+    for(int i = 0; i<count; i++) {
+        total += b[i].income;
+    }
+    printf("=> ·Îµù ¼º°ø!\n");
+    return count;
 }
