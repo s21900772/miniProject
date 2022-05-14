@@ -1,5 +1,6 @@
 #include "budget.h"
 #include <stdio.h>
+#include <string.h>
 
 int selectMenu() {
     int menu;
