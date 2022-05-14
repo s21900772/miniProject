@@ -4,11 +4,9 @@
 int main(){
     
     Budget slist[100];
-    int curcount=0;
     int count = 0, menu;
     
-    //count = loadData(slist);
-    curcount=count; 
+    count = LoadFile(slist);
 
     while (1){
         menu = selectMenu();
@@ -16,40 +14,44 @@ int main(){
         if(menu == 0) break;
         if(menu == 1 || menu ==3 || menu == 4){	
 		    if (count==0){ 
-                printf(" ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤!\n");
+                printf(" µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù!\n");
 			    continue;
 			}
 		}
 
         if(menu == 1) {
-            readBudget(slist,curcount); 
+            readBudget(slist,count); 
         }
 
         else if (menu == 2) {
-            count+=createBudget(&slist[curcount++]); 
+            count+=createBudget(&slist[count]); 
         }
 
         else if (menu == 3) {
-            int no=selectDataNo(slist, curcount);
+            int no=selectDataNo(slist, count);
             if(no==0){
-                printf("=>ì·¨ì†Œë¨!");
+                printf("=>Ãë¼ÒµÊ!");
                 continue;
             }
             updateBudget(&slist[no-1]);
         }
 
         else if (menu == 4) {
-            int no=selectDataNo(slist, curcount);
+            int no=selectDataNo(slist, count);
             if(no==0){
-                printf("=>ì·¨ì†Œë¨!");
+                printf("=>Ãë¼ÒµÊ!");
                 continue;
             }
             int deleteok;
-            printf("ì •ë§ë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?(ì‚­ì œ:1)");
+            printf("Á¤¸»·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?(»èÁ¦:1)");
             scanf("%d",&deleteok);
             if(deleteok == 1){
                 if(deleteBudget(&slist[no-1])) count --;       
            	 } 
+        }
+
+        else if (menu == 5) {
+            saveFile(slist, count);
         }
 
         else if (menu == 6) {
@@ -65,6 +67,6 @@ int main(){
         }
 	}
 
-	printf("\nì¢…ë£Œë¨!\n");
+	printf("\nÁ¾·áµÊ!\n");
    	return 0;
 }
