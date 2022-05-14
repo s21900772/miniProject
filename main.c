@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-#include "budget.h"
-
-int main(void){
+int main(){
     
     Budget slist[100];
     int curcount=0;
@@ -17,7 +13,7 @@ int main(void){
         if(menu == 0) break;
         if(menu == 1 || menu ==3 || menu == 4){	
 		    if (count==0){ 
-                printf(" µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù!\n");
+                printf(" ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤!\n");
 			    continue;
 			}
 		}
@@ -33,7 +29,7 @@ int main(void){
         else if (menu == 3) {
             int no=selectDataNo(slist, curcount);
             if(no==0){
-                printf("=>Ãë¼ÒµÊ!");
+                printf("=>ì·¨ì†Œë¨!");
                 continue;
             }
             updateBudget(&slist[no-1]);
@@ -42,18 +38,30 @@ int main(void){
         else if (menu == 4) {
             int no=selectDataNo(slist, curcount);
             if(no==0){
-                printf("=>Ãë¼ÒµÊ!");
+                printf("=>ì·¨ì†Œë¨!");
                 continue;
             }
             int deleteok;
-            printf("Á¤¸»·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?(»èÁ¦:1)");
+            printf("ì •ë§ë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?(ì‚­ì œ:1)");
             scanf("%d",&deleteok);
             if(deleteok == 1){
                 if(deleteBudget(&slist[no-1])) count --;       
            	 } 
         }
+
+        else if (menu == 6) {
+            searchByDate(slist, count);
+        }
+
+        else if (menu == 7) {
+            searchByCategory(slist, count);
+        }
+
+        else if (menu == 8) {
+            searchByMoney(slist, count);
+        }
 	}
 
-	printf("\nÁ¾·áµÊ!\n");
+	printf("\nì¢…ë£Œë¨!\n");
    	return 0;
 }
