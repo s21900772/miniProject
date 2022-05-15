@@ -56,9 +56,10 @@ void readBudget(Budget *b, int count)
 
 void updateBudget(Budget *b)
 {
-
+    total -= b->income;
     printf("금액입력 (지출: - /수입: +) : ");
     scanf("%d", &b->income);
+    total += b->income;
     getchar();
     printf("날짜입력: ");
     scanf("%[^\n]", b->date);
@@ -74,6 +75,7 @@ void updateBudget(Budget *b)
 
 int deleteBudget(Budget *b)
 {
+    total -= b->income;
     b->income = -1;
     printf("==> 삭제됨!\n");
     return 0;
@@ -181,6 +183,7 @@ void saveFile(Budget* b, int count)
 
 int LoadFile(Budget *b)
 {
+    total = 0;
     int count = 0;
     FILE *fp;
 
@@ -205,7 +208,6 @@ int LoadFile(Budget *b)
         }
     }
 
-    total = 0;
     for(int i = 0; i<count; i++) {
         total += b[i].income;
     }
