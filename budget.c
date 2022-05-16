@@ -25,16 +25,15 @@ int createBudget(Budget *b)
     printf("금액입력 (지출: - /수입: +) : ");
     scanf("%d", &b->income);
     total += b->income;
-    getchar();
     printf("날짜입력: ");
-    scanf("%[^\n]", b->date);
+    scanf(" %[^\n]", b->date);
     getchar();
     printf("카테고리입력");
     printf(" (식사, 의료/건강, 카페/간식, 술/유흥, 의류/미용, 교통, 주거/통신, 생활, 문화/여가, 여행/숙박, 교육, 기타) : ");
-    scanf("%[^\n]", b->category);
+    scanf(" %[^\n]", b->category);
     getchar();
     printf("상세내역 : ");
-    scanf("%[^\n]", b->expression);
+    scanf(" %[^\n]", b->expression);
     printf("==> 등록됨!\n");
 
     return 1;
@@ -42,7 +41,6 @@ int createBudget(Budget *b)
 
 void readBudget(Budget *b, int count)
 {
-    printf("count: %d\n",count);
     printf("날짜   금액   카테고리   상세내역\n");
     printf("=================================\n");
     for (int i = 0; i < count; i++)
@@ -60,16 +58,13 @@ void updateBudget(Budget *b)
     printf("금액입력 (지출: - /수입: +) : ");
     scanf("%d", &b->income);
     total += b->income;
-    getchar();
     printf("날짜입력: ");
-    scanf("%[^\n]", b->date);
-    getchar();
+    scanf(" %[^\n]", b->date);
     printf("카테고리입력");
     printf(" (식사, 의료/건강, 카페/간식, 술/유흥, 의류/미용, 교통, 주거/통신, 생활, 문화/여가, 여행/숙박, 교육, 기타) : ");
-    scanf("%[^\n]", b->category);
-    getchar();
+    scanf(" %[^\n]", b->category);
     printf("상세내역 : ");
-    scanf("%[^\n]", b->expression);
+    scanf(" %[^\n]", b->expression);
     printf("==> 수정됨!\n");
 }
 
@@ -95,9 +90,8 @@ void searchByDate(Budget *b, int count)
 {
     char search[20];
     int num = 0;
-    getchar();
     printf("검색할 날짜는? ");
-    scanf("%[^\n]", search);
+    scanf(" %[^\n]", search);
     printf("===========================\n");
     for (int i = 0; i < count; i++)
     {
@@ -119,9 +113,8 @@ void searchByCategory(Budget *b, int count)
 {
     char search[20];
     int num = 0;
-    getchar();
     printf("검색할 카테고리는? ");
-    scanf("%[^\n]", search);
+    scanf(" %[^\n]", search);
     printf("===========================\n");
     for (int i = 0; i < count; i++)
     {
